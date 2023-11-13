@@ -42,12 +42,10 @@ function loop(){
 
     let v3 = v1.copy().subtract(v2);
     v3.setMagnitude(100);
-    let mag = v3.magnitude();
-
     v3.limit(50);
     let v4 = v1.copy().subtract(v3);
     
-    
+    let mag = v3.magnitude();
     text("mag: " + mag.toString(), 100, 110, 'white');
 
     
@@ -55,6 +53,23 @@ function loop(){
 
     //line(v1.x, v1.y, v1.x - v3.x, v1.y - v3.y, 'red');
     line(v1.x, v1.y, v4.x, v4.y, 'red');
+
+    let v5 = v2.copy().subtract(v1);
+    let plr = cartesianToPolar(v5.x, v5.y);
+    text("degrees: " + plr.angleInDegrees.toString() + ", radians: " + plr.angleInRadians.toString() + ", radius: " + plr.radius.toString(), 100, 130, 'white');
+
+    let v6 = v4.copy().subtract(v1);
+
+    let plr2 = cartesianToPolar(v5.x, v5.y);
+    text(plr2.angleInDegrees.toString(), 100, 140, 'white');
+
+    let plr3 = cartesianToPolar(v6.x, v6.y);
+    text(plr2.angleInDegrees.toString(), 100, 150, 'white');
+
+
+    let angleInfo = v5.angleBetween(v6);
+    text("angle between: Degrees: " + angleInfo.angleInDegrees.toString() + ", radians: " + angleInfo.angleInRadians.toString(), 100, 160, 'white');
+
 
     //console.log(v3); 
 

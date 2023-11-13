@@ -16,41 +16,41 @@ class Vector{
     }
 
     //tested
-    add(vector: Vector): Vector {
-        this.x += vector.x;
-        this.y += vector.y;
+    add(v: Vector): Vector {
+        this.x += v.x;
+        this.y += v.y;
         return this;  
     }
 
     //tested
-    subtract(vector: Vector): Vector {
-        this.x -= vector.x;
-        this.y -= vector.y;
+    subtract(v: Vector): Vector {
+        this.x -= v.x;
+        this.y -= v.y;
         return this;  
     }
 
     //tested
-    multiply(vector: Vector): Vector {
-        this.x *= vector.x;
-        this.y *= vector.y;
+    multiply(v: Vector): Vector {
+        this.x *= v.x;
+        this.y *= v.y;
         return this;  
     }
 
     //tested
-    divide(vector: Vector): Vector {
-        if (vector.x === 0 || vector.y === 0) {
+    divide(v: Vector): Vector {
+        if (v.x === 0 || v.y === 0) {
             console.warn('Vector error', 'divide by 0');
             return this;
         }
 
-        this.x /= vector.x;
-        this.y /= vector.y;
+        this.x /= v.x;
+        this.y /= v.y;
         return this;
     }
 
      //tested
-    distance(vector: Vector): number{
-        return vector.copy().subtract(this).magnitude();
+    distance(v: Vector): number{
+        return v.copy().subtract(this).magnitude();
     }
 
     //tested
@@ -103,25 +103,17 @@ class Vector{
         return this.x * (vector.x || 0) + this.y * (vector.y || 0);
     }
 
-    angleBetween(vector) {
-        // const magSqMult = this.magSq() * vector.magSq();
+    angleBetween(v: Vector): AngleInfo {
+        let angleInRadiansV1 = Math.atan2(v.y, v.x);
+        let angleInDegreesV1 = angleInRadiansV1 * (180 / Math.PI); 
+        
+        let angleInRadiansV2 = Math.atan2(this.y, this.x);
+        let angleInDegreesV2 = angleInRadiansV2 * (180 / Math.PI); 
 
-        // // Returns NaN if either vector is the zero vector.
-        // if (magSqMult === 0) {
-        //   return NaN;
-        // }
-
-        // const u = this.cross(v);
-        // // The dot product computes the cos value, and the cross product computes
-        // // the sin value. Find the angle based on them. In addition, in the case of
-        // // 2D vectors, a sign is added according to the direction of the vector.
-        // let angle = Math.atan2(u.mag(), this.dot(vector));
-
-        // if (this.isPInst) {
-        //   angle = this._fromRadians(angle);
-        // }
-
-        // return angle;
+        let radianDifference = Math.abs(angleInRadiansV2 - angleInRadiansV1);
+        let degreesDifference = Math.abs(angleInDegreesV2 - angleInDegreesV1);
+        
+        return new AngleInfo(degreesDifference, radianDifference);
     }
 
 
@@ -129,11 +121,23 @@ class Vector{
 
 class Polar{ 
     public angleInDegrees: number;
+    public angleInRadians: number;
     public radius: number;
 
-    constructor(angleInDegrees: number, radius: number){
+    constructor(angleInDegrees?: number, angleInRadians?: number, radius?: number){
         this.angleInDegrees = angleInDegrees;
+        this.angleInRadians = angleInRadians;
         this.radius = radius;
+    }
+}
+
+class AngleInfo{
+    public angleInDegrees: number;
+    public angleInRadians: number;
+
+    constructor(angleInDegrees?: number, angleInRadians?: number){
+        this.angleInDegrees = angleInDegrees;
+        this.angleInRadians = angleInRadians;
     }
 }
 
