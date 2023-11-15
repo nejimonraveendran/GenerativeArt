@@ -4,6 +4,7 @@
 
 - Install Node.js
 - Install Typescript: ``` npm install -g typescript ```
+- From powershell (as admin): ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned```
 - Install live-server extention in VS Code
 - Optional: Install live-server npm package: To launch the site directly from command line:  ```npm install -g live-server```
   
