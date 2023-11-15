@@ -4,9 +4,14 @@
     margin: 0;
 }
 
-canvas {
+body{
     background: black;
+}
+
+canvas {
     position: absolute;
     top: 0;
     left: 0;
 }
+
+

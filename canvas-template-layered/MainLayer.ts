@@ -26,11 +26,13 @@ class MainLayer{
     public loop(){
         this.clearCanvas();
         // 
+        this._context.strokeStyle = 'blue';
+        this.circle(this._mouseX, this._mouseY, 10);
     }
 
     //events
     public mouseMoved(evt: MouseEvent){
-        this._mouseX = evt.x;
+        this._mouseX = evt.x; 
         this._mouseY = evt.y;
     }
 
