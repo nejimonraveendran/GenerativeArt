@@ -5,11 +5,7 @@ let _fps = 120;
 
 window.addEventListener('load', () => {
     _mainLayer = new MainLayer(_mainLayerCanvasId); 
-    _mainLayer.setup();
-
     // _layer2 = new Layer2('layer2');
-    // _layer2.setup();
-
     animate();
 });
 
@@ -21,6 +17,10 @@ window.addEventListener('load', () => {
 window.addEventListener('mousemove', (evt) => {
     _mainLayer.mouseMoved(evt);
     //_layer2.mouseMoved(evt);
+});
+
+window.addEventListener('click', (evt) => {
+    //
 });
 
 function animate(){
