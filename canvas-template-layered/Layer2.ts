@@ -6,8 +6,8 @@ class Layer2{
     private _canvasHeight: number;
     private _mouseX: number = 0;
     private _mouseY: number = 0;
-    private _fps = 120; //set layer fps 
-
+    private _fps = 120;
+ 
     constructor(canvasId: string){
         this._canvas = document.getElementById(canvasId) as HTMLCanvasElement;
         this._canvas.width = window.innerWidth;
@@ -17,36 +17,22 @@ class Layer2{
         this._context = this._canvas.getContext('2d', {willReadFrequently: true});
     }
 
-
-    public setup(){
-        //
-    }
- 
     //loop code
-    public loop(){
+    private _x = 0;
+    private loop(){
         this.clearCanvas();
-        // 
-        this._context.strokeStyle = 'red';
-        this.circle(this._mouseX + 10, this._mouseY, 10);
-    }
 
-    //events
-    public mouseMoved(evt: MouseEvent){
-        this._mouseX = evt.x;
-        this._mouseY = evt.y;
-    }
 
+        //dont change this code:
+        setTimeout(() => {
+            requestAnimationFrame(() => this.loop());
+        }, 1000/this._fps);
+    }
 
     //functions
-    clearCanvas(){
+    private clearCanvas(){
         this._context.clearRect(0, 0, this._canvasWidth, this._canvasHeight);
     }
 
-    circle(x: number, y: number, radius: number){     
-        this._context.beginPath(); 
-        this._context.arc(x, y, radius, 0, 2* Math.PI);        
-        this._context.closePath();
-        this._context.stroke();
-    }
 }
 
