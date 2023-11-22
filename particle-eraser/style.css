@@ -1,0 +1,38 @@
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: black;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: url('eraser-50.png'), auto;
+}
+
+.controls{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    cursor: default;
+}
+
+.heading{
+    color: rgba(255, 255, 255, 0.6);
+    font: 25px 'arial black';
+}
+
+.description{
+    color: white;
+    font: 15px 'courier new';    
+}
+
+#btnFile{
+    margin-top: 10px;
+    padding: 10px;
+}
